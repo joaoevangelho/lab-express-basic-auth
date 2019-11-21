@@ -21,16 +21,14 @@ router.get('/sign-up', (req, res, next) => {
 
 router.post('/sign-up', (req, res, next) => {
   const {
-    name,
-    email,
+    username,
     password
   } = req.body;
   bcrypt
     .hash(password, 10)
     .then(hash => {
       return User.create({
-        name,
-        email,
+        username,
         passwordHash: hash
       });
     })
